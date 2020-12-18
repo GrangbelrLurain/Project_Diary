@@ -206,8 +206,8 @@ const server = http.createServer((req, res) => {
           const startTitle = data.indexOf('title:');
           const startText = data.indexOf('text:');
           const startDate = data.indexOf('date:');
-          const title = data.substring(startTitle+7, startText-1);
-          const text = data.substring(startText+6, startDate-1);
+          const title = data.substring(startTitle+6, startText);
+          const text = data.substring(startText+5, startDate);
           const date = data.substring(startDate+6);
           const article = `
             <article class="inputArea">
@@ -218,7 +218,8 @@ const server = http.createServer((req, res) => {
               cols="30"
               rows="10"
               class="text"
-              placeholder="text">${text}</textarea>
+              placeholder="text"
+              value="${text}"></textarea>
               <input type="hidden" name="beforeDate" value="${date}"></input>
                 <div class="btnWrap">
                   <input type="submit" value="SAVE" class="btn">
